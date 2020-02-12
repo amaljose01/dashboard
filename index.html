@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>SAP SuccessFactors Provisioning</h1>
+    
+<img src="https://fixstream.com/wp-content/uploads/2017/05/sap-logo.png">
+<button type="button" onclick="loadDoc()">click to load SFRE queue</button>
+
+<div id="clddiv">
+<b1> Data will be loaded here....!!! please run it in IE (allow blocked content pop-up) </b1>
+</div>
+
+<script>
+
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var pagaSrc=this.responseText;
+      var startIndex=pagaSrc.indexOf("<div class=\"table-responsive\">");
+      var endIndex=pagaSrc.indexOf("</table>",startIndex);
+      var tableString=pagaSrc.substring(startIndex+30,endIndex);
+      
+     document.getElementById("clddiv").innerHTML =tableString.replace("<table","<table id=\"sample\" border=\"5\"");
+	  var table = document.getElementById("sample");
+      var rowLength = table.rows.length;
+	  for (var ri = 0; ri < rowLength; ri++) {
+	   var cellLength = table.rows[ri].cells.length - 1;
+	   for (var ci = cellLength; ci > 12; ci--) {
+		 table.rows[ri].deleteCell(ci);
+	   }
+	  }
+     
+    }
+  };
+  xhttp.open("GET", "https://reporting.byd.sap.corp/sap/bc/mdrs/cdo?type=crp_l&db_id=spc-02&for_system=000000000310106221%2c_empty_or_null_&list=45&operation_type=9503861%2c9503840%2c9500970%2c9502590&period_type=m&solution_type=JAM%2cMPOS%2cRPOS%2cBIZX%2cKMS%2cJ2W%2cLMS%2cLMSV%2cWFA&sort_by=request_id%2ccrea_month%2ccustomer_name&status=INPROC&target_biz_type=ZH526%2cZH534%2cZH535%2cZH527%2cZH421%2cZH103&date=$today", true);
+  xhttp.send();
+}
+
+</script>
+       
+<style>
+
+body {background-color: #f5f5f5;}
+h1 {color: #3498DB;margin-left: 0px;font-family: tahoma;}
+b1 {color: #1A5276;margin-left: 0px;font-family: verdana;font-size: 12px;} 
+button {background-color: #979A9A;border: none;color: #EBF5FB;padding: 08px 10px;text-align: center;font-size: 15px;}
+img {height: 80px;width: 175px;float: right;padding-top: 0px;}
+
+</style>
+
+</body>
+</html>
