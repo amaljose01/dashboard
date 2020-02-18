@@ -36,7 +36,7 @@ function loadDoc() {
      
     }
   };
-  xhttp.open("GET", "https://reporting.byd.sap.corp/sap/bc/mdrs/cdo?type=crp_l&db_id=spc-02&for_system=000000000310106221%2c_empty_or_null_&list=45&operation_type=9503861%2c9503840%2c9500970%2c9502590&period_type=m&solution_type=JAM%2cMPOS%2cRPOS%2cBIZX%2cKMS%2cJ2W%2cLMS%2cLMSV%2cWFA&sort_by=request_id%2ccrea_month%2ccustomer_name&status=INPROC&target_biz_type=ZH526%2cZH534%2cZH535%2cZH527%2cZH421%2cZH103&date=$today", true);
+  xhttp.open("GET", "https://reporting.byd.sap.corp/sap/bc/mdrs/cdo?date=20200218&db_id=spc-02&list=45&period_type=m&type=crp_l&operation_type=9500970&for_system=000000000310106221%2C_empty_or_null_&solution_type=JAM%2CMPOS%2CRPOS%2CBIZX%2CKMS%2CJ2W%2CLMS%2CLMSV%2CWFA&target_biz_type=ZH526%2CZH534%2CZH535%2CZH527%2CZH421%2CZH103&status=INPROC&sort_by=request_id%2Ccrea_month%2Ccustomer_name", true);
   xhttp.send();
 }
 
